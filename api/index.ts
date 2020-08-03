@@ -5,6 +5,8 @@ import * as fetch from 'node-fetch';
 export default async (req: NowRequest, res: NowResponse) => {
   const {img, r} = req.query;
 
+  if (!img) return res.status(400).json({error: 'img url missing'})
+
   try {
     const fetchResponse = await fetch(img);
     const buffer = await fetchResponse.buffer();
