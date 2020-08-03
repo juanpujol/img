@@ -1,0 +1,12 @@
+{
+  "name": "sharp-api",
+  "version": "1.0.0",
+  "description": "An API to transform images using nodejs sharp.",
+  "main": "api/index.js",
+  "author": "Beakyn",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/node": "^1.7.4",
+    "sharp": "^0.25.4"
+  }
+}
