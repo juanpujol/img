@@ -3,7 +3,7 @@ import sharp from 'sharp';
 import * as fetch from 'node-fetch';
 
 export default async (req: NowRequest, res: NowResponse) => {
-  const {img, r} = req.query;
+  const {img, r, w, h} = req.query;
 
   if (!img) return res.status(400).json({error: 'img url missing'})
 
@@ -11,10 +11,12 @@ export default async (req: NowRequest, res: NowResponse) => {
     const fetchResponse = await fetch(img);
     const buffer = await fetchResponse.buffer();
 
-    const sharpResponse = await sharp(buffer)
-      .rotate(Number(r) || 0, {background: '#00000000'})
-      .png()
-      .toBuffer()
+    let sharpResponse = await sharp(buffer)
+
+    if (r) sharpResponse = sharpResponse.rotate(Number(r) || 0, {background: '#00000000'});
+    if (w) sharpResponse = sharpResponse.resize({width: Number(w)});
+
+    sharpResponse = await sharpResponse.png().toBuffer()
 
     res.setHeader('Content-Type', 'image/png')
     res.send(sharpResponse)
