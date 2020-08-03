@@ -1,5 +1,18 @@
 import { NowRequest, NowResponse } from '@vercel/node'
+import sharp from 'sharp';
+import * as fetch from 'node-fetch';
 
-export default (req: NowRequest, res: NowResponse) => {
-  res.json({ name: 'John', email: 'john@example.com' })
+export default async (req: NowRequest, res: NowResponse) => {
+  const {img, r} = req.query;
+
+  const fetchResponse = await fetch(img);
+  const buffer = await fetchResponse.buffer();
+
+  const sharpResponse = await sharp(buffer)
+    .rotate(Number(r) || 0, {background: '#00000000'})
+    .png()
+    .toBuffer()
+
+  res.setHeader('Content-Type', 'image/png')
+  res.send(sharpResponse)
 }
