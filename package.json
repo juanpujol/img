@@ -4,7 +4,7 @@
   "description": "An API to transform images using the nodejs library Sharp https://github.com/lovell/sharp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Beakyn/sharp-api"
+    "url": "https://github.com/Beakyn/img-proxy"
   },
   "main": "api/index.js",
   "author": {
