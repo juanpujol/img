@@ -2,8 +2,7 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+During v0.x.y development this project will not support security issues. Once and if we get to v1, then we can start officialy supporting security vulnerabilities.
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -12,8 +11,4 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+All good for now. If you find something we should update, please let me know by creating an issue. Thank you.
