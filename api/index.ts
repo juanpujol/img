@@ -19,7 +19,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     sharpResponse = await sharpResponse.png().toBuffer()
 
     res.setHeader('Content-Type', 'image/png')
-    res.setHeader('Cache-Control', 's-maxage=10')
+    res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
 
     res.send(sharpResponse)
   } catch (error) {
