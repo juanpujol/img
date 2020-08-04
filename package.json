@@ -1,7 +1,7 @@
 {
   "name": "sharp-api",
   "version": "0.1.0",
-  "description": "An API to transform images using nodejs sharp.",
+  "description": "An API to transform images using the nodejs library Sharp https://github.com/lovell/sharp",
   "repository": {
     "type": "git",
     "url": "https://github.com/Beakyn/sharp-api"
