@@ -13,8 +13,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@vercel/node": "^1.7.4",
-    "node-fetch": "^2.6.0",
-    "sharp": "^0.25.4"
+    "@vercel/node": "1.7.4",
+    "node-fetch": "2.6.0",
+    "sharp": "0.25.4"
   }
 }
