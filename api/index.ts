@@ -11,7 +11,7 @@ export default async (req: NowRequest, res: NowResponse) => {
    * Normalize params
    */
   const background = bg ? `#${bg}` : '#00000000'
-  const position = String(pos).replace(',', ' ') || 'center'
+  const position = pos ? String(pos).replace(',', ' ') : 'center'
   const withoutEnlargement = Boolean(we)
 
   try {
