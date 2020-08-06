@@ -3,7 +3,7 @@ import sharp from 'sharp';
 import * as fetch from 'node-fetch';
 
 export default async (req: NowRequest, res: NowResponse) => {
-  const {img, r, w, h, fit, pos, bg, we} = req.query
+  const {img, r, w, h, fit, pos, bg, withoutEnlargement} = req.query
 
   if (!img) return res.status(400).json({code: 400, error: 'img param with url missing.'})
 
@@ -12,7 +12,6 @@ export default async (req: NowRequest, res: NowResponse) => {
    */
   const background = bg ? `#${bg}` : '#00000000'
   const position = pos ? String(pos).replace(',', ' ') : 'center'
-  const withoutEnlargement = Boolean(we)
 
   try {
     const fetchResponse = await fetch(img)
@@ -27,7 +26,7 @@ export default async (req: NowRequest, res: NowResponse) => {
         fit: fit || 'cover',
         position,
         background,
-        withoutEnlargement,
+        withoutEnlargement: Boolean(withoutEnlargement),
       }
     );
 
