@@ -8,30 +8,44 @@ export default async (req: NowRequest, res: NowResponse) => {
   if (!img) return res.status(400).json({code: 400, error: 'img param with url missing.'})
 
   /**
-   * Normalize params
+   * Normalize background. Used in resize and rotate.
    */
   const background = bg ? `#${bg}` : '#00000000'
-  const position = pos ? String(pos).replace(',', ' ') : 'center'
 
   try {
     const fetchResponse = await fetch(img)
     const buffer = await fetchResponse.buffer()
 
+    /**
+     * This instance of sharp will change based on the
+     * available params coming with the request.
+     */
     let sharpResponse = sharp(buffer)
 
+    /**
+     * If `w` or `h` params are present, then run the resize
+     * operation using other optional parameters.
+     */
     if (w || h) sharpResponse = sharpResponse.resize(
       Number(w) || undefined,
       Number(h) || undefined,
       {
         fit: fit || 'cover',
-        position,
+        position: pos ? String(pos).replace(',', ' ') : 'center',
         background,
         withoutEnlargement: Boolean(withoutEnlargement),
       }
     );
 
+    /**
+     * If `r` param is present, then run the rotate operations.
+     */
     if (r) sharpResponse = sharpResponse.rotate(Number(r) || 0, { background })
 
+    /**
+     * If `format` param is present, then convert to format
+     * before Buffer. Also, apply `q` as quality if available.
+     */
     if (format) {
       sharpResponse = await sharpResponse
         .toFormat(format, {quality: Number(q) || 80})
