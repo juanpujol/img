@@ -1,10 +1,10 @@
 {
-  "name": "img-proxy",
+  "name": "img",
   "version": "0.1.0",
   "description": "An API to transform images using the nodejs library Sharp https://github.com/lovell/sharp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Beakyn/img-proxy"
+    "url": "https://github.com/Beakyn/img"
   },
   "main": "api/index.js",
   "author": {
