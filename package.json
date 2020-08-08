@@ -11,6 +11,9 @@
     "name": "Beakyn",
     "email": "contact@beakyn.com"
   },
+  "scripts": {
+    "dev": "vc dev"
+  },
   "license": "MIT",
   "dependencies": {
     "@vercel/node": "1.7.4",
