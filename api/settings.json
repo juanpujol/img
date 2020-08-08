@@ -1,0 +1,7 @@
+{
+  "ALLOWED_ORIGINS": [
+    "https://cdn.pixabay.com",
+    "images.unsplash.com",
+    "https://onsmart-uploads-stg.s3.amazonaws.com"
+  ]
+}

@@ -1,12 +1,13 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 import sharp from 'sharp';
 import * as fetch from 'node-fetch';
+import settings from './settings.json';
 
-const { ALLOWED_ORIGINS } = process.env;
+const {ALLOWED_ORIGINS} = settings;
 
 export default async (req: NowRequest, res: NowResponse) => {
   const {img, r, w, h, fit, pos, bg, withoutEnlargement, format, q} = req.query
-  const allowedOrigins = ALLOWED_ORIGINS && ALLOWED_ORIGINS.split(',').map((i) => i.replace(/\s/g,''))
+  const allowedOrigins = ALLOWED_ORIGINS && ALLOWED_ORIGINS.map((i) => i.replace(/\s/g,''))
 
   if (!img) return res.status(400).json({code: 400, error: 'img param with url missing.'})
 
