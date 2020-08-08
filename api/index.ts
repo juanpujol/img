@@ -2,10 +2,23 @@ import { NowRequest, NowResponse } from '@vercel/node'
 import sharp from 'sharp';
 import * as fetch from 'node-fetch';
 
+const { ALLOWED_ORIGINS } = process.env;
+
 export default async (req: NowRequest, res: NowResponse) => {
   const {img, r, w, h, fit, pos, bg, withoutEnlargement, format, q} = req.query
+  const allowedOrigins = ALLOWED_ORIGINS && ALLOWED_ORIGINS.split(',').map((i) => i.replace(/\s/g,''))
 
   if (!img) return res.status(400).json({code: 400, error: 'img param with url missing.'})
+
+  let originAllowed = allowedOrigins ? false : true;
+
+  if (!originAllowed) {
+    allowedOrigins.forEach((allowedOrigin) => {
+      if (img.includes(allowedOrigin)) originAllowed = true;
+    })
+
+    if (!originAllowed) return res.status(400).json({code: 400, error: 'origin url not allowed.'})
+  }
 
   /**
    * Normalize background. Used in resize and rotate.
