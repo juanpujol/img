@@ -7,9 +7,16 @@ const {ALLOWED_ORIGINS, CONTROL_CACHE_HEADER} = settings;
 
 export default async (req: NowRequest, res: NowResponse) => {
   const {img, r, w, h, fit, pos, bg, withoutEnlargement, format, q} = req.query
-  const allowedOrigins = ALLOWED_ORIGINS && ALLOWED_ORIGINS.map((i) => i.replace(/\s/g,''))
 
+  /**
+   * Return error if the `img` param is not preset.
+   */
   if (!img) return res.status(400).json({code: 400, error: 'img param with url missing.'})
+
+  /**
+   * If allowed origins array, verify if the request is valid.
+   */
+  const allowedOrigins = ALLOWED_ORIGINS && ALLOWED_ORIGINS.map((i) => i.replace(/\s/g,''))
 
   let originAllowed = allowedOrigins ? false : true;
 
