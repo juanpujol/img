@@ -3,7 +3,7 @@ import sharp from 'sharp';
 import * as fetch from 'node-fetch';
 import settings from './settings.json';
 
-const {ALLOWED_ORIGINS} = settings;
+const {ALLOWED_ORIGINS, CONTROL_CACHE_HEADER} = settings;
 
 export default async (req: NowRequest, res: NowResponse) => {
   const {img, r, w, h, fit, pos, bg, withoutEnlargement, format, q} = req.query
@@ -71,7 +71,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     const {data, info} = sharpResponse;
 
     res.setHeader('Content-Type', `image/${info.format}`)
-    res.setHeader('Cache-Control', 'max-age=2592000, s-maxage=21600, stale-while-revalidate=86400, public')
+    res.setHeader('Cache-Control', (CONTROL_CACHE_HEADER || 'max-age=2592000, s-maxage=21600, stale-while-revalidate=86400, public'))
 
     res.send(data)
   } catch (error) {
