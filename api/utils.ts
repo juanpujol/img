@@ -1,12 +1,12 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 import settings from './settings.json';
 
-const {ALLOWED_ORIGINS, CONTROL_CACHE_HEADER} = settings;
+const { ALLOWED_ORIGINS, CONTROL_CACHE_HEADER } = settings;
 
 /**
  * Default response in case the /api/utils url is requested.
  */
-export default async (_: NowRequest, res: NowResponse) => res.status(404).json({code: 404, error: 'Not Found'})
+export default async (_: NowRequest, res: NowResponse) => res.status(404).json({ code: 404, error: 'Not Found' })
 
 /**
  * @param url Request origin URL
@@ -14,7 +14,7 @@ export default async (_: NowRequest, res: NowResponse) => res.status(404).json({
  * Return error if the img url param is not preset.
  */
 export const validateImgUrl = (url, res) => {
-  if (!url) return res.status(400).json({code: 400, error: 'The `img` query param with the url is missing.'})
+  if (!url) return res.status(400).json({ code: 400, error: 'The `img` query param with the url is missing.' })
 }
 
 /**
@@ -32,7 +32,7 @@ export const validateOrigins = (url, res) => {
       if (url.includes(allowedOrigin)) originAllowed = true;
     })
 
-    if (!originAllowed) return res.status(400).json({code: 400, error: 'Origin url not allowed.'})
+    if (!originAllowed) return res.status(400).json({ code: 400, error: 'Origin url not allowed.' })
   }
 }
 

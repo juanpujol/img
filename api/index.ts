@@ -4,7 +4,7 @@ import * as fetch from 'node-fetch';
 import { validateImgUrl, validateOrigins, controlCacheHeader } from './utils';
 
 export default async (req: NowRequest, res: NowResponse) => {
-  const {img, r, w, h, fit, pos, bg, withoutEnlargement, format, q} = req.query
+  const { img, r, w, h, fit, pos, bg, withoutEnlargement, format, q } = req.query
 
   /**
    * Return error if the `img` param is not preset.
@@ -19,7 +19,7 @@ export default async (req: NowRequest, res: NowResponse) => {
   /**
    * Normalize background. Used in resize and rotate.
    */
-  const background = bg ? `#${bg}` : '#00000000'
+  const background = bg ? `#${ bg }` : '#00000000'
 
   try {
     const fetchResponse = await fetch(img)
@@ -57,15 +57,15 @@ export default async (req: NowRequest, res: NowResponse) => {
      */
     if (format) {
       sharpResponse = await sharpResponse
-        .toFormat(format, {quality: Number(q) || 80})
+        .toFormat(format, { quality: Number(q) || 80 })
         .toBuffer({resolveWithObject: true});
     } else {
-      sharpResponse = await sharpResponse.toBuffer({resolveWithObject: true});
+      sharpResponse = await sharpResponse.toBuffer({ resolveWithObject: true });
     }
 
     const {data, info} = sharpResponse;
 
-    res.setHeader('Content-Type', `image/${info.format}`)
+    res.setHeader('Content-Type', `image/${ info.format }`)
     res.setHeader('Cache-Control', controlCacheHeader)
 
     res.send(data)
