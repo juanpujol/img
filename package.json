@@ -1,15 +1,15 @@
 {
   "name": "img",
   "version": "0.2.0",
-  "description": "An API to transform images using the nodejs library Sharp https://github.com/lovell/sharp",
+  "description": "An API that transforms images using the nodejs library Sharp https://github.com/lovell/sharp",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Beakyn/img"
+    "url": "https://github.com/juanpujol/img"
   },
   "main": "api/index.js",
   "author": {
-    "name": "Beakyn",
-    "email": "contact@beakyn.com"
+    "name": "Juan Pujol",
+    "email": "contact@juanpujol.com"
   },
   "scripts": {
     "dev": "vc dev"
