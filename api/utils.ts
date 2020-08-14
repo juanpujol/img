@@ -24,8 +24,6 @@ export const validateImgUrl = (url, res) => {
 export const validateOrigins = (url, res) => {
   const allowedOrigins = ALLOWED_ORIGINS && ALLOWED_ORIGINS.split(',').map((i) => i.replace(/\s/g,''))
 
-  console.log(allowedOrigins);
-
   let originAllowed = allowedOrigins ? false : true;
 
   if (!originAllowed) {
