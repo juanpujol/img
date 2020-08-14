@@ -1,7 +1,6 @@
 import { NowRequest, NowResponse } from '@vercel/node'
-import settings from './settings.json';
 
-const { ALLOWED_ORIGINS, CONTROL_CACHE_HEADER } = settings;
+const { ALLOWED_ORIGINS, CONTROL_CACHE_HEADER } = process.env;
 
 /**
  * Default response in case the /api/utils url is requested.
@@ -23,7 +22,9 @@ export const validateImgUrl = (url, res) => {
  * If allowed origins array, verify if the request is valid.
  */
 export const validateOrigins = (url, res) => {
-  const allowedOrigins = ALLOWED_ORIGINS && ALLOWED_ORIGINS.map((i) => i.replace(/\s/g,''))
+  const allowedOrigins = ALLOWED_ORIGINS && ALLOWED_ORIGINS.split(',').map((i) => i.replace(/\s/g,''))
+
+  console.log(allowedOrigins);
 
   let originAllowed = allowedOrigins ? false : true;
 

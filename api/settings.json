@@ -1,8 +1,0 @@
-{
-  "ALLOWED_ORIGINS": [
-    "https://cdn.pixabay.com",
-    "images.unsplash.com",
-    "https://onsmart-uploads-stg.s3.amazonaws.com"
-  ],
-  "CONTROL_CACHE_HEADER": "max-age=2592000, s-maxage=21600, stale-while-revalidate=86400, public"
-}
