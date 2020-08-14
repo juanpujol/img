@@ -6,7 +6,6 @@ During v0.x.y development, this project will not support security issues. Once a
 
 | Version | Supported          |
 | ------- | ------------------ |
-<!-- | 1.0.x   | :white_check_mark: | -->
 | 0.x.y   | :x:                |
 
 ## Reporting a Vulnerability
