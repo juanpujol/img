@@ -1,5 +1,7 @@
 # IMG
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/956705d13e2de554a2b3/maintainability)](https://codeclimate.com/github/juanpujol/img/maintainability)
+
 An API that transforms and proxies images using Nodejs.
 
 A work in progress  🚧, with the objective to create a query string map to the features in the [Sharp](https://github.com/lovell/sharp) library. Essentially being a dead-simple way to deploy your own [Cloudinary](https://cloudinary.com/) or [CloudImage](https://www.cloudimage.io/)
@@ -28,16 +30,43 @@ Once you deploy your own instance of IMG, now you can start using the API. Let's
 > _The Sharp lib has A LOT of operations to do on an image, I mean just look at this [list](https://sharp.pixelplumbing.com/api-operation), so mapping all of that to query params will take a while unless you want to help 😉._
 
 ### Resize
-> TODO 🚧
+You can resize with different functions using Fit, or `f={fit}` the possible values are:
+
+- cover
+- contain
+- fill
+- inside
+- outside
+
+You can read more about these here: https://sharp.pixelplumbing.com/api-resize#resize
+
+Then, you can change width and height using `w={number}` and `h={number}`.
+
+Other options are `position` and `bg` and `withoutEnlargement`.
 
 ### Rotate
-This one's very easy, just use the param `r={degress}`, you can also change the background color, by default it's transparent.
+This one's very easy, just use the param `r={degress}`, you can also change the background color, by default it's transparent but you can use `bg={RGBA}` as hex.
+
+Try it
+https://img.qtal.pro/api?img=https://images.unsplash.com/photo-1542665174-31db64d7e0e4&w=882&q=80&r=30&bg=FFFF00FF
 
 ### File Format
-> TODO 🚧
+You can change the format of the image with `format={format}`, these are the supported formats:
+
+- jpeg
+- png
+- webp
+- tiff
+- heif
+- raw
+- tile
+
+Still need to work on the options for each format.
+
+> If you don't know about it, you should definitely check out the `webp` format. It's my favorite!
 
 ### Quality
-> TODO 🚧
+To change the pixel quality of the image use `q={1-100}`
 
 Try it
 https://img.qtal.pro/api?img=https://images.unsplash.com/photo-1542665174-31db64d7e0e4&w=882&q=80&r=30&bg=FFFF00FF

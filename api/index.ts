@@ -1,7 +1,7 @@
 import { NowRequest, NowResponse } from '@vercel/node'
-import sharp from 'sharp';
+import sharp from 'sharp'
 import * as fetch from 'node-fetch';
-import { validateImgUrl, validateOrigins, controlCacheHeader } from './utils';
+import { validateImgUrl, validateOrigins, controlCacheHeader } from './utils'
 
 export default async (req: NowRequest, res: NowResponse) => {
   const { img, r, w, h, fit, pos, bg, withoutEnlargement, format, q } = req.query
@@ -9,12 +9,12 @@ export default async (req: NowRequest, res: NowResponse) => {
   /**
    * Return error if the `img` param is not preset.
    */
-  validateImgUrl(img, res);
+  validateImgUrl(img, res)
 
   /**
    * Return error if invalid origins are used on the request.
    */
-  validateOrigins(img, res);
+  validateOrigins(img, res)
 
   /**
    * Normalize background. Used in resize and rotate.
@@ -60,7 +60,7 @@ export default async (req: NowRequest, res: NowResponse) => {
         .toFormat(format, { quality: Number(q) || 80 })
         .toBuffer({resolveWithObject: true});
     } else {
-      sharpResponse = await sharpResponse.toBuffer({ resolveWithObject: true });
+      sharpResponse = await sharpResponse.toBuffer({ resolveWithObject: true })
     }
 
     const {data, info} = sharpResponse;
