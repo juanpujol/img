@@ -69,7 +69,7 @@ Still need to work on the options for each format.
 To change the pixel quality of the image use `q={1-100}`
 
 Try it
-https://img.qtal.pro/api?img=https://images.unsplash.com/photo-1542665174-31db64d7e0e4&w=882&q=80&r=30&bg=FFFF00FF
+https://img.qtal.pro/api?img=https://images.unsplash.com/photo-1597429885120-8ec402aebacc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&format=jpeg&q=5&w=800
 
 ### Optional Settings
 
